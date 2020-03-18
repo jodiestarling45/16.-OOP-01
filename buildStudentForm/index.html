@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký học viên</title>
+
+</head>
+<body>
+<table style="background-color: coral;color:blue">
+    <td>
+        <h1><span style="background-color: aqua; color:blue">ĐĂNG KÝ HỌC VIÊN</span></h1><br>
+        <table>
+            <form>
+            <tr>
+                <td>Họ và tên</td>
+                <td><input type="text" id="name"> </td>
+            </tr>
+            <tr>
+                <td>Ngày sinh</td>
+                <td><input type="date" id="birthday"> </td>
+            </tr>
+            <tr>
+                <td>Giới tính</td>
+                <td>
+                    <select id="gender">
+                        <option value="so">---Chọn giới tính---</option>
+                        <option value="male">NAM</option>
+                        <option value="female">NỮ</option>
+                        <option value="other">KHÁC</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Địa chỉ</td>
+                <td><textarea id="address" placeholder="Nhập địa chỉ tại đây"></textarea> </td>
+            </tr>
+            <tr>
+                <td>Lớp</td>
+                <td><select id="classOf">
+                    <option value="so">---Chọn lớp---</option>
+                    <option value="php1">PHP 01</option>
+                    <option value="php2">PHP 02</option>
+                    <option value="java1">JAVA 01</option>
+                    <option value="java2">JAVA 02</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" id="email"> </td>
+            </tr>
+            <tr>
+                <td>Điện thoại</td>
+                <td><input type="text" id="phoneNumber"> </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <p><input type = "button" name="registrar" value="Đăng ký" onclick="newStudent()"/>
+                        <input type = "reset" name="reset" value="Nhập lại"/></p>
+                </td>
+            </tr>
+            </form>
+        </table>
+    </td>
+</table>
+<script src="js/script.js"></script>
+</body>
+</html>
