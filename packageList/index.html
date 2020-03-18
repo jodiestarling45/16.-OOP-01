@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PACKAGE LIST</title>
+    <link href="https://fonts.googleapis.com/css?family=Spartan&display=swap" rel="stylesheet">
+
+</head>
+<style>
+    body{
+        font-family: 'Spartan', serif;
+        font-size: 13px;
+    }
+    td {
+        border: 1px solid black;
+    }
+    #packagelistheading{
+        background-color: green;
+        color: white;
+    }
+    #packagelistbigheading{
+        background-color: brown;
+        color: white;
+    }
+</style>
+<script>
+    function showForm() {
+        document.getElementById("form-input").style.display="block";
+    }
+    function closeForm() {
+        document.getElementById("form-input").style.display="none";
+
+    }
+</script>
+<body>
+<h1><b>PACKAGE LIST</b></h1>
+<input type="button" id="new_input" value="New Input" onclick="showForm()">
+<input type="button" id="close_form" value="Close form" onclick="closeForm()"><br><br>
+<form action="#" method="post" id="form-input" style="display: none">
+    <fieldset> <legend><b>PACKAGE INFORMATION PROCESSING</b></legend><br><br>
+        <fieldset><legend><b>GENERAL INFORMATION</b></legend><br><br>
+            NAME:<input type="text" name="name"><br>
+            QUANTITY:<input type="number" name="quantity"><br>
+            ID:<input type="text" name="id"><br><br>
+            DESCRIPTION:<textarea name="description" rows="5" cols="40" placeholder="Package description"></textarea><br><br>
+            IMAGE:<input type="file" name="packageImage" accept="image/*" /><br>
+            <img style="width: 200px" alt="Package Image" src="packageImage"><br>
+            TYPE:<input type="checkbox" name="type[]" value="1">Whole package
+            <input type="checkbox" name="type[]" value="2">Fragile
+            <input type="checkbox" name="type[]" value="3">Assembly
+            <input type="checkbox" name="type[]" value="8">Liquid
+            <input type="checkbox" name="type[]" value="4">Agricutural
+            <input type="checkbox" name="type[]" value="5">Electronic
+            <input type="checkbox" name="type[]" value="6">Waste
+            <input type="checkbox" name="type[]" value="7">Biohazard
+            <input type="checkbox" name="type[]" value="9">Medical<br><br>
+        </fieldset>
+        <fieldset><legend><b>PROPOSITIONAL INFORMATION</b></legend><br><br>
+            Weight:<input type="number" name="weight">Kgs<br>
+            Height:<input type="number" name="height">Cm<br>
+            Length:<input type="number" name="length">Cm<br>
+            Width:<input type="number" name="width">Cm<br><br>
+        </fieldset>
+        <fieldset><legend><b>DELIVERY INFORMATION</b></legend><br><br>
+            Provider:<input type="text" name="provider"><br>
+            Origin:<input type="text" name="origin"><br>
+            Destination:<input type="text" name="destination"><br>
+            Transporter:<select>
+                <option value="slt">Select one</option>
+                <option value="GHN">Giao hàng nhanh</option>
+                <option value="GHTK">Giao hàng tiết kiệm</option>
+                <option value="NJV">NinjaVan</option>
+                <option value="VTP">Viettel Post</option>
+                <option value="VNP">VN Post</option>
+            </select>
+            Transportation method:<select>
+                <option value="slt">Select one</option>
+                <option value="air">Air</option>
+                <option value="land">Land</option>
+                <option value="sea">Sea</option>
+            </select><br><br>
+            Time of receive:           <input type="time" name="recievetime"><input type="date" name="recievedate"><br>
+            Estimated time to delivery:<input type="time" name="esttime"><input type="date" name="estdate"><br>
+            <br><br>
+        </fieldset>
+        <fieldset><legend><b>STATUS</b></legend><br><br>
+            STATUS:<br><input type="radio" name="status"><span style="color: yellow"> WAITING FOR DELIVERY QUOTE </span><br><br>
+            <input type="radio" name="status"> <span style="color: green"> DELIVERING </span><br><br>
+            <input type="radio" name="status"> <span style="color: blue"> DELIVERED </span><br><br>
+            <input type="radio" name="status"> <span style="color: red"> CANCELED </span><br><br>
+        </fieldset>
+        <fieldset><legend>AUTHORIZATION</legend>
+            Employee<input type="text" name="username">
+            Password<input type="password" name="password">
+            <button>Authorize access</button>
+        </fieldset>
+
+        <fieldset><legend><b>CONFIRMATION</b></legend>
+            <input type="button" value="Confirm Package Information" onclick="closeForm()"> <input type="reset" value="Reset">
+        </fieldset>
+    </fieldset>
+</form>
+<table id="package_list">
+    <tr id="packagelistbigheading">
+        <td colspan="6">GENERAL INFORMATION</td>
+        <td rowspan="2">UNIT</td>
+        <td colspan="4">PROPOSITIONAL INFORMATION</td>
+        <td colspan="7">DELIVERY INFORMATION</td>
+        <td rowspan="2">STATUS</td>
+        <td rowspan="2">MODIFY</td>
+    </tr>
+    <tr id="packagelistheading">
+        <td><b>Package Name</b></td>
+        <td><b>Package ID</b></td>
+        <td><b>Package Description</b></td>
+        <td><b>Quantity</b></td>
+        <td><b>Package Image</b></td>
+        <td><b>Package Type</b></td>
+
+        <td><b>Weight</b></td>
+        <td><b>Height</b></td>
+        <td><b>Length</b></td>
+        <td><b>Width</b></td>
+        <td><b>Provider</b></td>
+        <td><b>Origin</b></td>
+        <td><b>Destination</b></td>
+        <td><b>Transporter</b></td>
+        <td><b>Transportation method</b></td>
+        <td><b>Time of receive</b></td>
+        <td><b>Estimated time to delivery</b></td>
+    </tr>
+    <tr>
+        <td>TEPPY</td>
+        <td>00001</td>
+        <td>Orange juice drink</td>
+        <td>24</td>
+        <td><img alt="none" style="width: 80px" src="http://sovina.vn/wp-content/uploads/2016/09/CC15.jpg"></td>
+        <td>Liquid</td>
+        <td>bottled</td>
+        <td>10</td>
+        <td>12</td>
+        <td>5</td>
+        <td>5</td>
+        <td>Minute Maid</td>
+        <td>Vietnam</td>
+        <td>Ha Noi, Vietnam</td>
+        <td>VNpost</td>
+        <td>Land</td>
+        <td>12:00 20/02/20</td>
+        <td>12:00 25/02/20</td>
+        <td>DELIVERED!</td>
+        <td><button>EDIT</button><br><button>DELETE</button></td>
+    </tr>
+    <tr>
+        <td>TL-025</td>
+        <td>00002</td>
+        <td>Ballpen, black</td>
+        <td>2000</td>
+        <td><img alt="none" style="width: 80px" src="http://flexoffice.com.vn/product/small_1592_ButbiTL025_den.jpg"> </td>
+        <td> Assembly</td>
+        <td>piece</td>
+        <td>0.05</td>
+        <td>12</td>
+        <td>1</td>
+        <td>1</td>
+        <td>Thiên Long</td>
+        <td>Vietnam</td>
+        <td>Hải Phòng, Vietnam</td>
+        <td>Viettel post</td>
+        <td>Land</td>
+        <td>2:00 25/02/20</td>
+        <td>15:00 27/02/20</td>
+        <td>DELIVERING!</td>
+        <td><button>EDIT</button><br><button>DELETE</button></td>
+    </tr>
+    <tr>
+        <td>Iphone X</td>
+        <td>00003</td>
+        <td>Smartphone</td>
+        <td>200</td>
+        <td><img alt="none" style="width: 80px" src="https://i.ebayimg.com/images/i/382394089410-0-1/s-l1000.jpg"> </td>
+        <td>Assembly</td>
+        <td>piece</td>
+        <td>0.174</td>
+        <td>143.6</td>
+        <td>70.9</td>
+        <td>7.7</td>
+        <td>Apple</td>
+        <td>China</td>
+        <td>TP Hồ Chí Minh, Vietnam</td>
+        <td>Giao hàng nhanh</td>
+        <td>Air</td>
+        <td>12:00 29/02/20</td>
+        <td>12:00 1/03/20</td>
+        <td>CANCELED!</td>
+        <td><button>EDIT</button><br><button>DELETE</button></td>
+    </tr>
+    <tr>
+        <td>PANADOL Extra</td>
+        <td>00004</td>
+        <td>Headache relieve medicine</td>
+        <td>100</td>
+        <td><img alt="none" style="width: 80px" src="https://www.panadol.com.au/content/dam/cf-consumer-healthcare/panadol/en_au/DCAU-PAN-EXTRA-1239-455x455-D1.png"> </td>
+        <td>Medical</td>
+        <td>blister</td>
+        <td>0.025</td>
+        <td>12</td>
+        <td>5</td>
+        <td>0.7</td>
+        <td>Phamarcity</td>
+        <td>Vietnam</td>
+        <td>Ha Noi, Vietnam</td>
+        <td>VNpost</td>
+        <td>Land</td>
+        <td>12:00 03/03/20</td>
+        <td>12:00 17/03/20</td>
+        <td>WAITING</td>
+        <td><button>EDIT</button><br><button>DELETE</button></td>
+    </tr>
+    <!-- <tr>
+         <td rowspan="6">GENERAL INFORMATION</td>
+         <td></td>
+         <td rowspan="5">DELIVERY INFORMATION</td>
+         <td></td>
+     </tr>
+     <tr id="packagelistheading">
+         <td><b>Package Name</b></td>
+         <td><b>Package ID</b></td>
+         <td><b>Package Description</b></td>
+         <td><b>Quantity</b></td>
+         <td><b>Package Image</b></td>
+         <td><b>Package Type</b></td>
+         <td><b>Package Propositional</b></td>
+         <td><b>Provider</b></td>
+         <td><b>Origin</b></td>
+         <td><b>Destination</b></td>
+         <td><b>Transporter</b></td>
+         <td><b>Time of receive</b></td>
+         <td><b>Estimated time to delivery</b></td>
+         <td><b>STATUS</b></td>
+         <td><b>Modify</b></td>
+     </tr>-->
+</table>
+<script src="js/script.js"></script>
+</body>
+</html>
