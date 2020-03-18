@@ -10,6 +10,6 @@ function getValue(id) {
     return document.getElementById(id).value;
 }
 function newStudent() {
-    let s=new Student(getValue('name'),getValue('birthday'),getValue('gender'),getValue('address'),getValue('classOf') ,getValue('email',getValue('phoneNumber')));
+    let s=new Student(getValue('name'),getValue('birthday'),getValue('gender'),getValue('address'),getValue('classOf') ,getValue('email'),getValue('phoneNumber'));
 console.log(s);
 }
