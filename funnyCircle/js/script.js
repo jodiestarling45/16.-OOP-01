@@ -53,7 +53,6 @@ function createMultipleCircle(){
         let y = Math.random() * window.innerHeight;
         let dx = ( Math.random() - 0.5 ) * 2;
         let dy = ( Math.random() - 0.5 ) * 2;
-        /*new Circle();*/
         circles.push( new Circle( x, y, dx, dy, radius, color ) );
     }
 }
