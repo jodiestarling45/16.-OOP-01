@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+</head>
+<body>
+<!--1 tạo lớp đối tượng sinh viên
+    2 tạo danh sách đối tượng sinh viên
+    3 hiển thị danh sách sinh viên
+    4 sắp xếp theo chiều tăng dần của điểm tb-->
+<script>
+    function Student(studentID, fName, lName, className, mathScore, phyScore, chemScore) {
+        this.studentID = studentID;
+        this.fName = fName;
+        this.lName = lName;
+        this.className = className;
+        this.mathScore = mathScore;
+        this.phyScore = phyScore;
+        this.chemScore = chemScore;
+
+        this.getStudentID = function () {
+            return this.studentID;
+        };
+        this.getAverageScore = function () {
+            return (this.mathScore + this.phyScore + this.chemScore) / 3;
+        };
+        this.show = function () {
+            document.write("Student ID: " + this.getStudentID() + "<br>");
+            document.write("Fullname: " + this.lName + " " + this.fName + "<br>");
+            document.write("Class of " + this.className + "<br>");
+            document.write("Math score: " + this.mathScore + "<br>");
+            document.write("Physic score: " + this.phyScore + "<br>");
+            document.write("Chemistry score: " + this.chemScore + "<br>");
+            document.write("Average score: " + this.getAverageScore() + "<br>");
+            document.write("<br>");
+            document.write("<br>");
+        }
+    }
+
+    const MAX = 10;
+
+    function StudentList() {
+        this.studentList = new Array(MAX);
+        this.initStudentList = function () {
+            for (let i = 0; i < MAX; i++) {
+                let studentID = "CG_" + i;
+                let fName = Math.random().toString(36).substring(10);
+                let lName = Math.random().toString(36).substring(5);
+                let className = "C0220" + Math.random().toString(36).substring(2);
+                let mathScore = Math.floor(Math.random() * 10);
+                let phyScore = Math.floor(Math.random() * 10);
+                let chemScore = Math.floor(Math.random() * 10);
+
+                this.studentList[i] = new Student(studentID, fName, lName, className, mathScore, phyScore, chemScore);
+            }
+        };
+
+        this.showStudentList = function () {
+
+            for (let i = 0; i < MAX; i++) {
+                this.studentList[i].show();
+            }
+        };
+
+
+        this.sortStudentList = function () {
+            this.studentList.sort(function (sv1, sv2) {
+                return sv1.getAverageScore() - sv2.getAverageScore();
+            })
+        };
+    }
+        function main() {
+            /*let sv1= new Student("00001","John","Kennedy","politic101",9,8,9);
+            let sv2= new Student("00002","Barack","Obama","politic201",10,9,9);
+            let sv3= new Student("00003","Donald","Trump","politic101",0,1,0);
+
+            sv1.show();
+            sv2.show();
+            sv3.show();*/
+            let sList = new StudentList();
+            sList.initStudentList();
+            sList.showStudentList();
+            document.write("=============AFTER SORTING===============<br>");
+            sList.sortStudentList();
+            sList.showStudentList();
+        }
+
+        main();
+
+</script>
+</body>
+</html>
