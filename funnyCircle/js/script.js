@@ -1,9 +1,40 @@
-function Circle(x, y, radius){
-    this.x = x;
-    this.y = y;
-    this.radius = radius;
-}
+let ctx = document.getElementById("myCanvas").getContext("2d");
+let circles=[];
 
+function Circle( x, y, dx, dy, radius, color ) {
+
+    this.x 	= x;
+    this.y 	= y;
+    this.dx = dx;
+    this.dy = dy;
+    this.color=color;
+    this.radius = radius;
+
+    this.draw = function() {
+        ctx.beginPath();
+        ctx.arc( this.x, this.y,  this.radius, 0, Math.PI * 2, false  );
+        ctx.fillStyle = this.color;
+        ctx.fill();
+    };
+
+    this.update = function() {
+
+        if( this.x + this.radius > 1368 || this.x - this.radius < 0 ) {
+
+            this.dx = -this.dx;
+        }
+
+        if( this.y + this.radius > 768 || this.y - this.radius < 0 ) {
+
+            this.dy = -this.dy;
+        }
+
+        this.x += this.dx;
+        this.y += this.dy;
+
+        this.draw();
+    }
+}
 function getRandomHex(){
     return Math.floor(Math.random()*255);
 }
@@ -14,26 +45,24 @@ function getRandomColor(){
     let blue = getRandomHex();
     return "rgb(" + red + "," + blue + "," + green +")";
 }
-
-function createCircle(){
-    var ctx = document.getElementById("myCanvas").getContext("2d");
-    let radius = Math.floor(Math.random() * 80);
-    let color = getRandomColor();
-    let x = Math.random() * window.innerWidth;
-    let y = Math.random() * window.innerHeight;
-    let circle= new Circle(x, y, radius);
-    ctx.beginPath();
-    ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
-    ctx.fillStyle = color;
-    ctx.fill();
-}
-
 function createMultipleCircle(){
     for(let i = 0; i < 30; i++){
-        createCircle();
+        let radius = Math.floor(Math.random() * 80);
+        let color = getRandomColor();
+        let x = Math.random() * window.innerWidth;
+        let y = Math.random() * window.innerHeight;
+        let dx = ( Math.random() - 0.5 ) * 2;
+        let dy = ( Math.random() - 0.5 ) * 2;
+        /*new Circle();*/
+        circles.push( new Circle( x, y, dx, dy, radius, color ) );
     }
 }
-
+function animateTheCircles() {
+    requestAnimationFrame(animateTheCircles);
+    ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+    for (let i = 0; i <30 ; i++) {
+        circles[i].update();
+    }
+}
 createMultipleCircle();
-
-
+animateTheCircles();
