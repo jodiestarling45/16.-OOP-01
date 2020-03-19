@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>STUPIDPHONE</title>
+
+    <!--Xây dựng lớp mô tả điện thoại-->
+</head>
+<link rel="stylesheet" href="css/style.css">
+<body>
+<fieldset><legend>IPHONE</legend>
+<div class="mobile" id="iphone">
+    <fieldset>
+        <table>
+            <tr>
+                <td><textarea class="battery" id="iphoneBattery" disabled ></textarea></td>
+                <td><textarea id="iphoneStatus" disabled ></textarea></td>
+            </tr>
+        </table>
+    </fieldset>
+    <fieldset class="inbox" id="iphone-inbox-label"><div>inbox:</div><div id="iphone-inbox"></div></fieldset>
+    <fieldset class="outbox" id="iphone-outbox-label"><div>outbox:</div><div id="iphone-outbox"></div></fieldset>
+    <fieldset><input class="msg" id="iphone-msg" oninput="mobile1.writeMsg(this.value)" placeholder="messages...">
+    <button class="send" id="iphone-send" onclick="sendMessage(mobile1,mobile2)">send</button>
+    <button  id="decrease" onclick="mobile1.decreaseBattery()">decrease</button>
+</fieldset>
+</div>
+</fieldset>
+<fieldset><legend>SAMSUNG</legend>
+    <div class="mobile" id="SamSung">
+        <fieldset>
+            <table>
+                <tr>
+                    <td><textarea class="battery" id="SamSungBattery" disabled ></textarea></td>
+                    <td><textarea id="SamSungStatus" disabled ></textarea></td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset class="inbox" id="SamSung-inbox-label"><div>inbox:</div><div id="SamSung-inbox"></div></fieldset>
+        <fieldset class="outbox" id="SamSung-outbox-label"><div>outbox:</div><div id="SamSung-outbox"></div></fieldset>
+        <fieldset><input class="msg" id="SamSung-msg" oninput="mobile2.writeMsg(this.value)" placeholder="messages...">
+            <button class="send" id="SamSung-send" onclick="sendMessage(mobile2,mobile1)">send</button>
+        </fieldset>
+    </div>
+</fieldset>
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--hiển thị ngày hôm nay bằng tiếng việt-->
+<script>
+    let today = new Date();
+
+    function translateDate() {
+        const weekDay = ["Chủ nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"];
+        let d = today.getDay();
+        return weekDay[d];
+    }
+
+    for (let i = 0; i < 100; i++) {
+
+        document.write("Hôm nay là " + translateDate() + " ngày " + today.getDate() + " tháng " + (today.getMonth() + 1) + " năm " + today.getFullYear() + "<br>");
+        let today1 = new Date();
+        document.write("Thời gian thực hiện: " + (today1.getMilliseconds() - today.getMilliseconds()) + "<br>");
+    }
+
+    function correctString(str) {
+        let a = str.split(" ");
+        console.log(a.join());
+        let b = [];
+        for (let i = 0; i < a.length; i++) {
+            if (a[i].length > 0) {
+                b.push(a[i]);
+            }
+        }
+        console.log(b.join());
+        let tmp = b.join(" ");
+        let tmpUpCase = tmp.toUpperCase();
+        tmp = tmp.toLowerCase();
+        tmp = tmpUpCase.charAt(0) + tmp.substring(1, tmp.length);
+
+        for (let i = 0; i < tmp.length; i++) {
+            if (tmp.charAt(i) === ' ') {
+                tmp = tmp.substring(0, i+1) + tmpUpCase.charAt(i + 1) + tmp.substring(i + 2, tmp.length);
+
+            }
+        }
+        console.log(tmp);
+
+    }
+
+    correctString("nGUYEn      vAn aN");
+</script>
+</body>
+</html>
