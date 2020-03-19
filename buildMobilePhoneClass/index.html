@@ -8,7 +8,8 @@
 </head>
 <link rel="stylesheet" href="css/style.css">
 <body>
-<fieldset><legend>IPHONE</legend>
+<table><tr><td>
+<fieldset id="iphoneOutline"><legend>IPHONE</legend>
 <div class="mobile" id="iphone">
     <fieldset>
         <table>
@@ -24,24 +25,26 @@
     <button class="send" id="iphone-send" onclick="sendMessage(mobile1,mobile2)">send</button>
 </fieldset>
 </div>
-</fieldset>
-<fieldset><legend>SAMSUNG</legend>
-    <div class="mobile" id="SamSung">
+</fieldset></td>
+<td><fieldset id="nokiaOutline"><legend>NOKIA</legend>
+    <div class="mobile" id="Nokia">
         <fieldset>
             <table>
                 <tr>
-                    <td><textarea class="battery" id="SamSungBattery" disabled ></textarea></td>
-                    <td><textarea id="SamSungStatus" disabled ></textarea></td>
+                    <td><textarea class="battery" id="NokiaBattery" disabled ></textarea></td>
+                    <td><textarea id="NokiaStatus" disabled ></textarea></td>
                 </tr>
             </table>
         </fieldset>
-        <fieldset class="inbox" id="SamSung-inbox-label"><div>inbox:</div><div id="SamSung-inbox"></div></fieldset>
-        <fieldset class="outbox" id="SamSung-outbox-label"><div>outbox:</div><div id="SamSung-outbox"></div></fieldset>
-        <fieldset><input class="msg" id="SamSung-msg" oninput="mobile2.writeMsg(this.value)" placeholder="messages...">
-            <button class="send" id="SamSung-send" onclick="sendMessage(mobile2,mobile1)">send</button>
+        <fieldset class="inbox" id="Nokia-inbox-label"><div>inbox:</div><div id="Nokia-inbox"></div></fieldset>
+        <fieldset class="outbox" id="Nokia-outbox-label"><div>outbox:</div><div id="Nokia-outbox"></div></fieldset>
+        <fieldset><input class="msg" id="Nokia-msg" oninput="mobile2.writeMsg(this.value)" placeholder="messages...">
+            <button class="send" id="Nokia-send" onclick="sendMessage(mobile2,mobile1)">send</button>
         </fieldset>
     </div>
-</fieldset>
+</fieldset></td>
+</tr>
+</table>
 <script src="js/script.js"></script>
 </body>
 </html>

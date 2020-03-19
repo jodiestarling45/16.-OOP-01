@@ -48,7 +48,7 @@ class Mobile {
 }
 
 let mobile1 = new Mobile('iphone');
-let mobile2 = new Mobile('SamSung');
+let mobile2 = new Mobile('Nokia');
 
 /*mobile1.autoDecreaseBattery();
 mobile2.autoDecreaseBattery();*/
@@ -69,9 +69,9 @@ function sendMessage(m1, m2) {
     m1.sendMsg(m2);
     document.getElementById('iphone-inbox').innerHTML = mobile1.inbox;
     document.getElementById('iphone-outbox').innerHTML = mobile1.outbox;
-    document.getElementById('SamSung-inbox').innerHTML = mobile2.inbox;
-    document.getElementById('SamSung-outbox').innerHTML = mobile2.outbox;
-    document.getElementById('SamSung-msg').value = '';
+    document.getElementById('Nokia-inbox').innerHTML = mobile2.inbox;
+    document.getElementById('Nokia-outbox').innerHTML = mobile2.outbox;
+    document.getElementById('Nokia-msg').value = '';
     document.getElementById('iphone-msg').value = '';
     mobile1.battery--;
     phoneStatus();
@@ -80,21 +80,21 @@ function sendMessage(m1, m2) {
 }
 
 function displayBattery() {
-    document.getElementById('iphoneBattery').value = "Battery: " + mobile1.battery;
-    document.getElementById('SamSungBattery').value = "Battery: " + mobile2.battery;
+    document.getElementById('iphoneBattery').value = "BATTERY: " + mobile1.battery;
+    document.getElementById('NokiaBattery').value = "BATTERY: " + mobile2.battery;
 }
 
 function phoneStatus() {
     if (mobile1.battery <= 0) {
-        document.getElementById('iphoneStatus').value = "The phone is dead, it's stupid."
+        document.getElementById('iphoneStatus').value = "STATUS: The phone is dead, it's stupid."
         document.getElementById('iphone-msg').disabled=true;
         document.getElementById("iphone-send").disabled=true;
-    }else document.getElementById('iphoneStatus').value = "You're good to go, for now.";
+    }else document.getElementById('iphoneStatus').value = "STATUS: You're good to go, for now.";
     if (mobile2.battery <= 0) {
-        document.getElementById('SamSungStatus').value = "The phone is dead, it's stupid."
-        document.getElementById('SamSung-msg').disabled=true;
-        document.getElementById("SamSung-send").disabled=true;
-    }else document.getElementById('SamSungStatus').value = "You're good to go, for now.";
+        document.getElementById('NokiaStatus').value = "STATUS: The phone is dead, it's stupid."
+        document.getElementById('Nokia-msg').disabled=true;
+        document.getElementById("Nokia-send").disabled=true;
+    }else document.getElementById('NokiaStatus').value = "STATUS: You're good to go, for now.";
 
 
 }
