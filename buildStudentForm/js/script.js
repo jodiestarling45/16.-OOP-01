@@ -25,9 +25,10 @@ function newStudent() {
 }
 
 function showStudent() {
+/*
     let s = new Student(1, getValue('name'), getValue('birthday'), getValue('gender'), getValue('address'), getValue('classOf'), getValue('email'), getValue('phoneNumber'));
-
-    console.log(s);
+*/
+    let s=newStudent();
     let txt = '';
     txt += "<table>" +
         "<tr>" +
