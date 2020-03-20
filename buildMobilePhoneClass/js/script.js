@@ -86,18 +86,58 @@ function displayBattery() {
 
 function phoneStatus() {
     if (mobile1.battery <= 0) {
-        document.getElementById('iphoneStatus').value = "STATUS: The phone is dead, it's stupid."
-        document.getElementById('iphone-msg').disabled=true;
-        document.getElementById("iphone-send").disabled=true;
-    }else document.getElementById('iphoneStatus').value = "STATUS: You're good to go, for now.";
+        document.getElementById('iphoneStatus').value = "STATUS: The phone is dead, it's stupid.";
+        document.getElementById('iphone-msg').disabled = true;
+        document.getElementById("iphone-send").disabled = true;
+        document.getElementById('iphonePower').value = "RECHARGE AND POWER ON";
+    } else document.getElementById('iphoneStatus').value = "STATUS: You're good to go, for now.";
     if (mobile2.battery <= 0) {
-        document.getElementById('NokiaStatus').value = "STATUS: The phone is dead, it's stupid."
-        document.getElementById('Nokia-msg').disabled=true;
-        document.getElementById("Nokia-send").disabled=true;
-    }else document.getElementById('NokiaStatus').value = "STATUS: You're good to go, for now.";
+        document.getElementById('NokiaStatus').value = "STATUS: The phone is dead, it's stupid.";
+        document.getElementById('Nokia-msg').disabled = true;
+        document.getElementById("Nokia-send").disabled = true;
+        document.getElementById('NokiaPower').value = "RECHARGE AND POWER ON";
+    } else document.getElementById('NokiaStatus').value = "STATUS: You're good to go, for now.";
+
 
 
 }
+function IphoneSwitch() {
 
+    let btn = document.getElementById("iphonePower");
+
+    if (btn.innerHTML === "POWER OFF") {
+        btn.innerHTML = "RECHARGE AND POWER ON";
+        document.getElementById('iphone-msg').disabled = true;
+        document.getElementById("iphone-send").disabled = true;
+    }
+    else {
+        btn.innerHTML = "POWER OFF";
+        document.getElementById('iphone-msg').disabled = false;
+        document.getElementById("iphone-send").disabled = false;
+        mobile1.battery=100;
+        phoneStatus();
+        displayBattery();
+    }
+
+}
+function NokiaSwitch() {
+
+    let btn = document.getElementById("NokiaPower");
+
+    if (btn.innerHTML === "POWER OFF") {
+        btn.innerHTML = "RECHARGE AND POWER ON";
+        document.getElementById('Nokia-msg').disabled = true;
+        document.getElementById("Nokia-send").disabled = true;
+    }
+    else {
+        btn.innerHTML = "POWER OFF";
+        document.getElementById('Nokia-msg').disabled = false;
+        document.getElementById("Nokia-send").disabled = false;
+        mobile2.battery=100;
+        phoneStatus();
+        displayBattery();
+    }
+
+}
 displayBattery();
 phoneStatus();
