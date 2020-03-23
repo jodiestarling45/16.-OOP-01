@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CROSS GAME, JS STYLE!</title>
+    <link href="https://fonts.googleapis.com/css?family=Spartan&display=swap" rel="stylesheet">
+</head>
+<style>
+    body{
+        font-family: 'Spartan', serif;
+        font-size: 13px;
+    }
+    table {
+        width: auto;
+        border-collapse: collapse;
+    }
+    div {
+        margin: auto;
+        width: fit-content;
+    }
+    td {
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        border-color: darkblue;
+        color: green;
+    }
+</style>
+<body>
+
+<fieldset><legend style="text-align: center"><h1>CROSS GAME FROM HELL</h1></legend>
+    <div style="margin: auto;width: fit-content" id="result"></div><br>
+    <div style="text-align: center"><button id="resetBtn" onClick="window.location.href=window.location.href" hidden style="margin: auto;height:60px;width:200px;color: #4cae4c" >NEW GAME</button></div>
+    <div id="gameboard"></div>
+
+</fieldset>
+<script>
+    const DEFAULT_ROWS = 20;
+    const DEFAULT_COLS = 20;
+    let drawBoard = "<table border='10px'>";
+    let arr = [];
+    let gamer = 1;
+    let isGameOver = false;
+
+    function drawGameboard() {
+        let i, j;
+        for (i = 0; i < DEFAULT_ROWS; i++) {
+            arr[i] = [];
+            drawBoard += "<tr>";
+            for (j = 0; j < DEFAULT_COLS; j++) {
+                arr[i][j] = "*";
+                drawBoard += '<td id=" "' + i + ' , ' + j + ' onclick="play(this,' + i + ',' + j + ')"></td>';
+            }
+            drawBoard += "</tr>";
+        }
+        document.getElementById('gameboard').innerHTML = drawBoard;
+    }
+
+    function play(cell, x, y) {
+        if (isGameOver) {
+            return
+        }
+        if (!cell.innerHTML) {
+            switch (gamer) {
+                case 1:
+                    cell.innerHTML = "x";
+                    arr[x][y] = "x";
+                    gamer = 2;
+                    checkWin();
+                    break;
+                case 2:
+                    cell.innerHTML = "o";
+                    gamer = 1;
+                    checkWin();
+                    break;
+            }
+        }checkWin(cell,x,y);
+    }
+
+    function checkWin(cell, x, y) {
+
+        checkRow(cell, x, y);
+        checkCol(cell, x, y);
+        checkCrossRight(cell, x, y);
+        checkCrossLeft(cell, x, y);
+        if (isGameOver) {
+            document.getElementById('result').innerHTML="<h2><strong>The game is OVER, one of you Won, and you know who it is.</strong></h2>"+"-It took me forever to make this little thing, so a round of applause, maybe?";
+            document.getElementById("resetBtn").hidden=false;
+        }
+
+    }
+
+    function checkRow(cell, x, y) {
+        let i = 1;
+        let j = 1;
+        let count = 1;
+        while ((y + i) < DEFAULT_COLS && arr[x][y + i] === cell.innerHTML) {
+            i++;
+            count++;
+        }
+        while ((y - j) >= 0 && arr[x][y - j] === cell.innerHTML) {
+            j++;
+            count++;
+        }
+        console.log(count);
+        gameOver(count);
+    }
+
+    function checkCol(cell, x, y) {
+        let i = 1;
+        let j = 1;
+        let count = 1;
+        while ((x + i) < DEFAULT_ROWS && arr[x + i][y] === cell.innerHTML) {
+            i++;
+            count++;
+        }
+        while ((x - j) >= 0 && arr[x - j][y] === cell.innerHTML) {
+            j++;
+            count++;
+        }
+        gameOver(count);
+    }
+
+    function checkCrossRight(cell, x, y) {
+        let i = 1;
+        let j = 1;
+        let count = 1;
+        while ((x + i) < DEFAULT_ROWS && (y + i) < DEFAULT_COLS && (arr[x + i][y + i] === cell.innerHTML)) {
+            i++;
+            count++;
+        }
+        while ((x - j) >= 0 && (y - j) >= 0 && (arr[x - j][y - j] === cell.innerHTML)) {
+            j++;
+            count++;
+        }
+        gameOver(count);
+    }
+
+    function checkCrossLeft(cell, x, y) {
+        let i = 1;
+        let j = 1;
+        let count = 1;
+        while ((x + i) < DEFAULT_ROWS && (y - i) >= 0 && (arr[x + i][y - i] === cell.innerHTML)) {
+            i++;
+            count++;
+        }
+        while ((x - j) >= 0 && (y + j) <= DEFAULT_COLS && (arr[x - j][y + j] === cell.innerHTML)) {
+            j++;
+            count++;
+        }
+        gameOver(count);
+    }
+
+    function gameOver(count) {
+        if (count >= 5) {
+            isGameOver = true;
+            return true;
+        }
+
+    }
+
+    drawGameboard();
+</script>
+</body>
+</html>
